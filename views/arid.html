@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=UTF-8 />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+  </head>
+  <body>
+	<div class="myDiv">
+	<div class="controls-left">
+	<button onclick="popMusic()" class="musicPopButton"><i class="fa fa-music" aria-hidden="true"></i></button>
+	<div class="playerPlacement hide" id="playerContainer">
+	<div class="container">
+	<div class="content">
+    <div class="art">
+      <img id="album-cover" alt="" style="border-radius:100%;height:300px;width:300px;"/>
+    </div>
+	<center>
+	<h3 id="title"></h3>
+	<audio id="mpp">
+	<source id="mp" src="" type="audio/mpeg">
+	</audio>
+	</center>
+    <div class="player">
+	<center>
+      <button class="musicControls" onclick="playPrev()"><i class="fa fa-fast-backward"></i></button>
+	  <button id="playBut" class="musicControls" onclick="playMusic();"> <i class="fa fa-play"></i></button>
+	  <button class="musicControls" onclick="playNext();"> <i class="fa fa-fast-forward"></i></button>
+	  </center>
+    </div>
+  </div>
+	</div>
+	</div>
+	</div>
+	<div class="controls-center">
+	<center>
+	<button class="btn home" onclick="clickFunc('/views/feedback.html')"><i class="fa fa-home" aria-hidden="true"></i></button>
+	</center>
+	</div>
+	<div class="controls-right">
+	<button class="btnPushed" >Arid</button>
+	<button class="btn go" onclick="clickFunc('/views/bay.html')">Bay</button>
+	<button class="btn go" onclick="clickFunc('/views/snow.html')">Snow</button>
+	</div>
+	</div>
+	<audio id="click" style="display:none;">
+	<source src="../sound/click.mp3" type="audio/mpeg">
+	</audio>
+	<script>
+	function clickFunc(url) {
+	  window.location.href=url;
+	}
+	function popMusic(){
+		document.getElementById("click").play();
+		document.getElementById("playerContainer").classList.toggle('hide');
+	}
+	function setSpin(playing){
+		document.getElementById("click").play();
+		if(playing){
+			document.getElementById("album-cover").classList.add('rotate');
+		}
+		else{
+		document.getElementById("album-cover").classList.remove('rotate');
+		}
+	}
+	</script>
+	<script>
+	var curr=0;
+	var arr=[];
+	var playing=false;
+	arr.push({title:"Arid Music",src:"../sound/m1.mp3",cover:'../images/relax4.jpg'});
+	arr.push({title:"Bay Music",src:"../sound/m3.mp3",cover:'../images/relax3.jpg'});
+	arr.push({title:"Snow Music",src:"../sound/m2.mp3",cover:'../images/relax5.jpg'});
+	document.getElementById("title").innerHTML=arr[curr].title;
+	document.getElementById('album-cover').src=arr[curr].cover;
+	document.getElementById("mpp").src=arr[curr].src;
+	document.getElementById("mpp").load();
+	function playMusic(){
+		if(!playing){
+			playing=true;
+			setSpin(playing);
+			document.getElementById("mpp").play();
+		}
+		else{
+			playing=false;
+			setSpin(playing);
+			document.getElementById("mpp").pause();
+		}
+		setButton(playing);
+	}
+	function playNext(){
+		curr=(curr+1)%arr.length;
+		document.getElementById("title").innerHTML=arr[curr].title;
+		document.getElementById('album-cover').src=arr[curr].cover;
+		document.getElementById("mpp").src=arr[curr].src;
+		document.getElementById("mpp").load();
+		playing=true;
+		setSpin(playing);
+		document.getElementById("mpp").play();
+		setButton(playing);
+	}
+	function playPrev(){
+		if(curr===0){
+			curr=arr.length-1;
+		}
+		else{
+			curr--;
+		}
+		document.getElementById("title").innerHTML=arr[curr].title;
+		document.getElementById('album-cover').src=arr[curr].cover;
+		document.getElementById("mpp").src=arr[curr].src;
+		document.getElementById("mpp").load();
+		playing=true;
+		setSpin(playing);
+		document.getElementById("mpp").play();
+		setButton(playing);
+	}
+	function setButton(playing){
+		if(playing){
+			document.getElementById('playBut').innerHTML='<i class="fa fa-pause"></i>';
+		}else{
+			document.getElementById('playBut').innerHTML='<i class="fa fa-play"></i>';
+		}
+	}
+	</script>
+    <script type="module">
+		import * as THREE from "https://cdn.jsdelivr.net/npm/three@v0.108.0/build/three.module.js";
+		import {OrbitControls} from "https://cdn.jsdelivr.net/npm/three@v0.108.0/examples/jsm/controls/OrbitControls.js";
+      var scene, camera, renderer;
+
+      function init() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(55,window.innerWidth/window.innerHeight,45,30000);
+        camera.position.set(-900,-200,-900);
+
+        renderer = new THREE.WebGLRenderer({antialias:true});
+        renderer.setSize(window.innerWidth,window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        var controls = new OrbitControls(camera);
+        controls.addEventListener('change', renderer);
+        controls.minDistance = 500;
+        controls.maxDistance = 1500;
+        
+        var ma = [];
+        var texture_ft = new THREE.TextureLoader().load( '/res/arid2_ft.jpg');
+        var texture_bk = new THREE.TextureLoader().load( '/res/arid2_bk.jpg');
+        var texture_up = new THREE.TextureLoader().load( '/res/arid2_up.jpg');
+        var texture_dn = new THREE.TextureLoader().load( '/res/arid2_dn.jpg');
+        var texture_rt = new THREE.TextureLoader().load( '/res/arid2_rt.jpg');
+        var texture_lf = new THREE.TextureLoader().load( '/res/arid2_lf.jpg');
+          
+        ma.push(new THREE.MeshBasicMaterial( { map: texture_ft }));
+        ma.push(new THREE.MeshBasicMaterial( { map: texture_bk }));
+        ma.push(new THREE.MeshBasicMaterial( { map: texture_up }));
+        ma.push(new THREE.MeshBasicMaterial( { map: texture_dn }));
+        ma.push(new THREE.MeshBasicMaterial( { map: texture_rt }));
+        ma.push(new THREE.MeshBasicMaterial( { map: texture_lf }));
+   
+        for (var i = 0; i < 6; i++)
+           ma[i].side = THREE.BackSide;
+        var skyboxGeo = new THREE.BoxGeometry( 10000, 10000, 10000);
+        var skybox = new THREE.Mesh( skyboxGeo, ma );
+        scene.add( skybox );  
+        animate();
+      }
+      function animate() {
+        renderer.render(scene,camera);
+        requestAnimationFrame(animate);
+      }
+      init();
+	</script>
+  </body>
+</html>

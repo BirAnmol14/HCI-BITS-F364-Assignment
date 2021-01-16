@@ -1,0 +1,93 @@
+body{
+		background-color:#222831;
+		color:white;
+		overflow:hidden;
+}
+.feedback{
+	width:80%;
+	min-height:80vh;
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:10vh;
+	margin-bottom:10vh;
+	background-color:#f2a365;
+	align-items:center;
+	padding:10px;
+	box-shadow: -15px 25px 8px 0 black;
+}
+.card{
+	width:60%;
+	margin-top:5%;
+	margin-bottom:5%;
+	background-color:#fff;
+	align-items:center;
+	padding:10px;
+	color:black;
+	border-radius:20px;
+	box-shadow: -1px -3px 5px 0 black;
+}
+
+ul {
+  position: relative;
+  display: flex;
+  justify-content:center;
+  box-shadow: -2px -2px 5px black, 3px 3px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  background:#1fa67a;
+}
+ul li {
+  position: relative;
+  list-style: none;
+  text-align: center;
+  margin: 1px;
+}
+ul li label {
+  position: relative;
+  cursor: pointer;
+  display:inline-block;
+   margin-bottom:10px;
+}
+ul li label input[type="checkbox"] {
+  position: inline;
+  opacity: 0;
+}
+ul li label .icon-box {
+  align-items: center;
+  box-shadow: -2px -2px 5px black, 3px 3px 10px rgba(0, 0, 0, 0.7);
+  width: 50px;
+  height: 50px;
+  background: #1fa67a;
+  display: flex;
+  justify-content: center;
+  margin-left:60px;
+  margin-right:60px;
+}
+ul li label .icon-box .fa {
+  font-size: 24px;
+  color: #fff;
+}
+ul li label :checked ~ .icon-box {
+  box-shadow: inset -2px -2px 5px black, inset 3px 3px 10px rgba(0, 0, 0, 0.7);
+}
+ul li label :checked ~ .icon-box .fa {
+  transform: scale(0.80);
+}
+
+.big{
+	width:100px;
+	height:100px;
+	padding:5px;
+	cursor:pointor;
+	color:white;
+	outline: none;
+	font-size:1em;
+	border-radius:100px;
+	background-color:red;
+	box-shadow:-4px -4px 10px black, 6px 6px 15px rgba(0, 0, 0, 0.7);
+}
+.big:active{
+	box-shadow: inset -4px -4px 10px black,inset 6px 6px 15px rgba(0, 0, 0, 0.7);
+	transform: scale(0.95);
+}

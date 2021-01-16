@@ -1,0 +1,80 @@
+body{
+		background-color:white;
+}
+div{
+	width:80%;
+	height:350px;
+	margin-left:10%;
+	margin-right:10%;
+	color:white;
+	margin-bottom:20px;
+	padding:10px;
+}
+.blue{
+	background-color:#1F3A93;
+}
+.green{
+	background-color:#3FC380;
+}
+.btn{
+		cursor:pointer;
+		height:50px;
+		width:50px;
+		margin:10px;
+		padding:5px;
+}
+.rnd{
+	border-radius:100%;
+}
+.shd1{
+	box-shadow: -4px -4px 0px 0px black; 
+}
+.shd2{
+	box-shadow: -4px 4px 0px 0px black; 
+}
+.shd3{
+	box-shadow: 3px 3px 2px 0px white; 
+}
+.shd3:active{
+	box-shadow: 1px 1px 2px 0px white;
+	transform:translateY(2px);	
+}
+.shd4{
+	box-shadow: 3px 3px 0px 0px black,4px 4px 2px 0px black,-2px -2px rgb(0,0,0,0.3); 
+}
+.shd4:active{
+	box-shadow: inset 1px 1px 0px 0px black,inset 2px 2px 2px 0px black,inset -1px -1px rgb(0,0,0,0.1); 
+	transform:scale(0.95);
+	transform:translateY(5px);
+}
+.shd5{
+	box-shadow: 0px 0px 2px 5px white; 
+}
+.shd5:active{
+	box-shadow: inset 0px 0px 2px 2px black;
+	transform:scale(0.95);
+}
+.shd6{
+	box-shadow: 4px 4px 2px 2px black,5px 5px 3px #a7a7a7, -2px -2px 4px 2px #999;
+}
+.shd6:active{
+	box-shadow: inset 2px 2px 1px 1px black,inset 3px 3px 3px #a7a7a7, inset -1px -1px 2px 1px #999;
+	transform:scale(0.90);
+}
+.shd7{
+	box-shadow: inset 2px 2px 1px 1px black,inset 3px 3px 3px #a7a7a7, inset -1px -1px 2px 1px #999;
+}
+.shd8{
+	box-shadow: 0px 0px 2px 5px black; 
+}
+.shd8:active{
+	box-shadow: inset 0px 0px 2px 2px rgb(0,0,0,0.4);
+	transform:scale(0.95);
+}
+.shd9{
+		box-shadow: 0px 8px #000,-3px 3px 3px rgb(0,0,0,0.3);
+}
+.shd9:active{
+	 box-shadow: 0px 4px #000,inset 3px 3px 3px rgb(0,0,0,0.3);
+	  transform:translateY(5px);
+}
